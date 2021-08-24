@@ -1,0 +1,2 @@
+# archi
+Arch Install Script
