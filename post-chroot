@@ -31,6 +31,7 @@ echo "127.0.1.1 helium.element.lan  helium" >> /etc/hosts
 mkinitcpio -P
 
 # Set root password
+echo "Set password for root user"
 passwd
 
 # Install bootloader
