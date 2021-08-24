@@ -67,7 +67,7 @@ systemctl enable firewalld
 systemctl enable acpid
 
 # Create new user
-useradd -m -G wheel,power,input,storage,uucp,network -s /usr/bin/zsh ktdawson
+useradd -m -G wheel ktdawson
 sed --in-place 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
 echo "Set password for new user ktdawson"
 passwd ktdawson
