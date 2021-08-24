@@ -74,10 +74,9 @@ mount /dev/sda1 /mnt/boot/efi
 mkswap /dev/sda2
 swapon /dev/sda2
 
-# Install Arch Linux
-echo "Starting install.."
-echo "Installing Arch Linux, KDE with Konsole and Dolphin and GRUB2 as bootloader" 
-pacstrap /mnt base base-devel linux linux-firmware linux-headers archlinux-keyring neovim zsh grml-zsh-config grub os-prober amd-ucode efibootmgr dosfstools freetype2 fuse2 mtools iw wpa_supplicant dialog xorg xorg-server xorg-xinit mesa xf86-video-vmware mate mate-extra
+# Install Arch Baes
+echo "Starting Base install.."
+pacstrap /mnt base linux linux-firmware git neovim
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -90,11 +89,6 @@ chmod a+x /mnt/root/post-chroot
 echo "After chrooting into newly installed OS, please run the post-chroot by executing ./post-chroot"
 echo "Press any key to chroot..."
 read tmpvar
-arch-chroot /mnt /bin/bash
+arch-chroot /mnt
 
 # Finish
-echo "If post-chroot was run succesfully, you will now have a fully working bootable Arch Linux system installed."
-echo "The only thing left is to reboot into the new system."
-echo "Press any key to reboot or Ctrl+C to cancel..."
-read tmpvar
-reboot
