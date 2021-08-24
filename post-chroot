@@ -1,0 +1,52 @@
+# post-chroot
+#  _       _                               __ ____ ____  
+# | |     | |                             /_ |___ \___ \ 
+# | | ____| | __ ___      _____  ___  _ __ | | __) |__) |
+# | |/ / _` |/ _` \ \ /\ / / __|/ _ \| '_ \| ||__ <|__ < 
+# |   < (_| | (_| |\ V  V /\__ \ (_) | | | | |___) |__) |
+# |_|\_\__,_|\__,_| \_/\_/ |___/\___/|_| |_|_|____/____/ 
+#
+# https://github.com/kdawson133/
+#
+# @kirk133
+#
+#!/bin/sh
+
+echo "Kirks's Arch Configurator"
+
+# Set date time
+ln -sf /usr/share/zoneinfo/Australia/Sydney /etc/localtime
+hwclock --systohc
+
+# Set locale to en_AU.UTF-8 UTF-8
+sed -i '/en_AU.UTF-8 UTF-8/s/^#//g' /etc/locale.gen
+locale-gen
+echo "LANG=en_AU.UTF-8" >> /etc/locale.conf
+
+# Set hostname
+echo "helium" >> /etc/hostname
+echo "127.0.1.1 helium.element.lan  helium" >> /etc/hosts
+
+# Generate initramfs
+mkinitcpio -P
+
+# Set root password
+passwd
+
+# Install bootloader
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# Create new user
+useradd -m -G wheel,power,input,storage,uucp,network -s /usr/bin/zsh ktdawson
+sed --in-place 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
+echo "Set password for new user ktdawson"
+passwd ktdawson
+
+# Setup display manager
+systemctl enable sddm.service
+
+# Enable services
+systemctl enable NetworkManager.service
+
+echo "Configuration done. You can now exit chroot."
