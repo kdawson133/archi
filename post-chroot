@@ -25,6 +25,8 @@ echo "LANG=en_AU.UTF-8" >> /etc/locale.conf
 
 # Set hostname
 echo "helium" >> /etc/hostname
+echo "127.0.0.1     localhost" > /etc/hosts
+echo "::1           localhost" >> /etc/hosta
 echo "127.0.1.1 helium.element.lan  helium" >> /etc/hosts
 
 # Generate initramfs
