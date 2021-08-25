@@ -14,6 +14,9 @@
 
 echo "Kirks's Arch Configurator"
 
+set -o nounset # error when referencing undefined variable
+set -o errexit # exit when command fails
+
 # Set date time
 ln -sf /usr/share/zoneinfo/Australia/Sydney /etc/localtime
 hwclock --systohc
@@ -39,11 +42,8 @@ passwd
 # get best mirrors
 reflector -c Australia -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 
-# Refresh the repos 
-pacman -Syy
-
 # Install Required packages
-pacman -S --no-confirm grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools reflector base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb nfs-utils inetutils dnsutils bluez bluez-utils cups hplip alsa-utils pulseaudio bash-completion openssh rsync reflector acpi acpi_call edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat ipset firewalld flatpak sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font
+pacman -Sy grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools reflector base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb nfs-utils inetutils dnsutils bluez bluez-utils cups hplip alsa-utils pulseaudio bash-completion openssh rsync reflector acpi acpi_call edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat ipset firewalld flatpak sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font
 
 # Video Drivers
 pacman -S --noconfirm xf86-video-vmware

@@ -14,6 +14,9 @@
 
 echo "Kirk's Arch Installer"
 
+set -o nounset # error when referencing undefined variable
+set -o errexit # exit when command fails
+
 # Set up network connection
 read -p 'Are you connected to internet? [y/N]: ' neton
 if ! [ $neton = 'y' ] && ! [ $neton = 'Y' ]
