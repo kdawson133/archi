@@ -79,7 +79,7 @@ swapon /dev/sda2
 
 # Install Arch Baes
 echo "Starting Base install.."
-pacstrap /mnt base linux linux-firmware git neovim reflector grub
+pacstrap /mnt base linux linux-firmware git neovim reflector grub rsync
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
