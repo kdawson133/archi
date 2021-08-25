@@ -15,6 +15,11 @@
 set -o nounset # error when referencing undefined variable
 set -o errexit # exit when command fails
 
+# Install Paru AUR helper
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si --noconfirm
+
 sudo pacman -Sy --noconfirm xorg xorg-server mate mate-extra lightdm lightdm-gtk-greeter firefox arc-gtk-theme arc-icon-theme vlc xed xreader metacity gnome-shell
 
 sudo systemctl enable lightdm
