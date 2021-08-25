@@ -1,0 +1,26 @@
+# mate-desktop
+#  _      _                               __ ____ ____  
+# | |     | |                             /_ |___ \___ \ 
+# | | ____| | __ ___      _____  ___  _ __ | | __) |__) |
+# | |/ / _` |/ _` \ \ /\ / / __|/ _ \| '_ \| ||__ <|__ < 
+# |   < (_| | (_| |\ V  V /\__ \ (_) | | | | |___) |__) |
+# |_|\_\__,_|\__,_| \_/\_/ |___/\___/|_| |_|_|____/____/ 
+#
+# https://github.com/kdawson133/
+#
+# @kirk133
+#  
+#!/bin/sh
+
+set -o nounset # error when referencing undefined variable
+set -o errexit # exit when command fails
+
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si --noconfirm
+
+sudo pacman -Sy --noconfirm xorg xorg-server mate mate-extra lightdm lightdm-gtk-greeter firefox arc-gtk-theme arc-icon-theme vlc xed xreader metacity gnome-shell
+
+sudo systemctl enable lightdm
+
+printf "\e[1;32mDone! Type reboot.\e[0m" 
