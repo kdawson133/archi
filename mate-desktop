@@ -1,4 +1,4 @@
-mate-desktop
+# mate-desktop
 #  _      _                               __ ____ ____  
 # | |     | |                             /_ |___ \___ \ 
 # | | ____| | __ ___      _____  ___  _ __ | | __) |__) |
@@ -19,7 +19,7 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
 
-sudo pacman -Sy xorg xorg-server mate mate-extra lightdm lightdm-gtk-greeter
+sudo pacman -Sy --noconfirm xorg xorg-server mate mate-extra lightdm lightdm-gtk-greeter firefox arc-gtk-theme arc-icon-theme vlc xed xreader metacity gnome-shell
 
 sudo systemctl enable lightdm
 

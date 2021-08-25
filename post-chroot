@@ -43,7 +43,7 @@ passwd
 reflector -c Australia -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 
 # Install Required packages
-pacman -Sy efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb nfs-utils inetutils dnsutils bluez bluez-utils cups hplip alsa-utils pulseaudio bash-completion openssh rsync acpi acpi_call edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat ipset flatpak sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font
+pacman -Sy efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb nfs-utils inetutils dnsutils bluez bluez-utils cups hplip alsa-utils pulseaudio bash-completion openssh rsync acpi acpi_call edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat ipset flatpak sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font archlinux-keyring
 
 # Video Drivers
 pacman -S --noconfirm xf86-video-vmware
