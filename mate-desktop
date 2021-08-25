@@ -1,5 +1,5 @@
-# mate-desktop
-#  _       _                               __ ____ ____  
+mate-desktop
+#  _      _                               __ ____ ____  
 # | |     | |                             /_ |___ \___ \ 
 # | | ____| | __ ___      _____  ___  _ __ | | __) |__) |
 # | |/ / _` |/ _` \ \ /\ / / __|/ _ \| '_ \| ||__ <|__ < 
@@ -23,4 +23,4 @@ sudo pacman -Sy xorg xorg-server mate mate-extra lightdm lightdm-gtk-greeter
 
 sudo systemctl enable lightdm
 
-printf "\e[1;32mDone! Type reboot.\e[0m"
+printf "\e[1;32mDone! Type reboot.\e[0m" 
