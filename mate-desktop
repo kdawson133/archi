@@ -1,0 +1,27 @@
+# mate-desktop
+#  _       _                               __ ____ ____  
+# | |     | |                             /_ |___ \___ \ 
+# | | ____| | __ ___      _____  ___  _ __ | | __) |__) |
+# | |/ / _` |/ _` \ \ /\ / / __|/ _ \| '_ \| ||__ <|__ < 
+# |   < (_| | (_| |\ V  V /\__ \ (_) | | | | |___) |__) |
+# |_|\_\__,_|\__,_| \_/\_/ |___/\___/|_| |_|_|____/____/ 
+#
+# https://github.com/kdawson133/
+#
+# @kirk133
+#  
+#!/bin/sh
+
+sudo firewall-cmd --add-port=1025-65535/tcp --permanent
+sudo firewall-cmd --add-port=1025-65535/udp --permanent
+sudo firewall-cmd --reload
+
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si --noconfirm
+
+sudo pacman -Sy xorg xorg-server mate mate-extra lightdm lightdm-gtk-greeter
+
+sudo systemctl enable lightdm
+
+printf "\e[1;32mDone! Type reboot.\e[0m"
