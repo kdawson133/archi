@@ -20,7 +20,7 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
 
-sudo pacman -Sy --noconfirm xorg xorg-server lightdm cinnamon nemo-fileroller firefox arc-gtk-theme arc-icon-theme vlc xed xreader metacity gnome-shell
+sudo pacman -Sy --noconfirm xorg xorg-server lightdm cinnamon nemo-fileroller gnome-terminal firefox arc-gtk-theme arc-icon-theme vlc xed xreader metacity gnome-shell
 
 paru -S --noconfirm lightdm-slickgreeter lightdm-settings
 
