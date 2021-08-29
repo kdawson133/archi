@@ -11,6 +11,9 @@
 # @kirk133
 #  
 #!/bin/sh
+# Variables
+Size_EFI=+260M # Size of EFI/Boot Partition
+Size_SWP=+8G   # Size of Swap Partition
 
 echo "Kirk's Arch Installer"
 
@@ -27,8 +30,8 @@ fi
 
 # Filesystem mount warning
 echo "This script will create and format the partitions as follows:"
-echo "/dev/sda1 - 512Mib will be mounted as /boot/efi"
-echo "/dev/sda2 - 8GiB will be used as swap"
+echo "/dev/sda1 - $Size_EFI will be mounted as /boot/efi"
+echo "/dev/sda2 - $size_SWP will be used as swap"
 echo "/dev/sda3 - rest of space will be mounted as /"
 read -p 'Continue? [y/N]: ' fsok
 if ! [ $fsok = 'y' ] && ! [ $fsok = 'Y' ]
@@ -45,12 +48,12 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk /dev/sda
   p # primary partition
   1 # partition number 1
     # default - start at beginning of disk 
-  +512M # 512 MB boot parttion
+  $Size_EFI # boot parttion
   n # new partition
   p # primary partition
   2 # partion number 2
     # default, start immediately after preceding partition
-  +8G # 8 GB swap parttion
+  $Size_SWP # swap parttion
   n # new partition
   p # primary partition
   3 # partion number 3
@@ -79,7 +82,7 @@ swapon /dev/sda2
 
 # Install Arch Baes
 echo "Starting Base install.."
-pacstrap /mnt base linux linux-firmware git neovim reflector grub rsync
+pacstrap /mnt base linux linux-firmware git neovim zsh reflector grub rsync
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
