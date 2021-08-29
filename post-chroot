@@ -52,7 +52,7 @@ pacman -Sy --noconfirm efibootmgr networkmanager network-manager-applet dialog w
 # pacman -S --noconfirm xf86-video-amdgpu
 # pacman -S --noconfirm xf86-video-nouveau
 # pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
-pacman -S --noconcirm xf86-video-fbenv
+pacman -S --noconfirm xf86-video-fbdev
 
 # Microcode
 pacman -S --noconfirm amd-ucode
