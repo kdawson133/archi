@@ -52,7 +52,7 @@ mkinitcpio -P
 
 # Set root password
 
-echo "root:${Root_User_PW}" | passwd
+echo -e "${Root_User_PW}\n${Root_User_PW}" | passwd root
 echo
 echo
 echo "Password set for root user"
@@ -93,7 +93,7 @@ systemctl enable acpid
 # Create new user
 useradd -m -G wheel $New_User
 sed --in-place 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
-echo "${New_User}:${New_User_PW}" | passwd
+echo -e "${New_User_PW}\n${New_User_PW}" | passwd ${New_User}
 echo "Password set for ${New_User}"
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
