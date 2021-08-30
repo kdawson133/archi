@@ -41,23 +41,24 @@ echo "$Language" >> /etc/locale.conf
 
 # Set hostname
 echo "$Hostname" >> /etc/hostname
-echo "127.0.0.1        localhost" > /etc/hosts
-echo "::1              localhost" >> /etc/hosts
-echo "127.0.1.1        $Hostname.$Domain        $Hostname" >> /etc/hosts
-echo "192.168.1.2      oxygen.$Domain			oxygen" >> /etc/hosts
-echo "192.168.1.3      cobalt.$Domain           cobalt" >> /etc/hosts
+echo "127.0.0.1 		localhost" > /etc/hosts
+echo "::1 				localhost" >> /etc/hosts
+echo "127.0.1.1 		${Hostname}.${Domain} 	${Hostname}" >> /etc/hosts
+echo "192.168.1.2 		oxygen.${Domain} 		oxygen" >> /etc/hosts
+echo "192.168.1.3 		cobalt.${Domain} 		cobalt" >> /etc/hosts
+
 # Generate initramfs
 mkinitcpio -P
 
 # Set root password
 
-echo "$Root_User_PW:root" | passwd
+echo "${Root_User_PW}:root" | passwd
 echo
 echo
 echo "Password set for root user"
 
 # get best mirrors
-reflector -c Australia -a 12 --sort rate --save /etc/pacman.d/mirrorlist
+reflector -c $Country -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 
 # Install Required packages
 pacman -Sy --noconfirm efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb nfs-utils inetutils dnsutils bluez bluez-utils cups hplip alsa-utils pulseaudio bash-completion openssh rsync acpi acpi_call edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat ipset flatpak sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font archlinux-keyring
@@ -92,7 +93,7 @@ systemctl enable acpid
 # Create new user
 useradd -m -G wheel $New_User
 sed --in-place 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
-echo "$New_User_PW:$New_User" | passwd
-echo "Password set for $New_User"
+echo "${New_User_PW}:${New_User}" | passwd
+echo "Password set for ${New_User}"
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
