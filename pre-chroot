@@ -30,8 +30,8 @@ fi
 
 # Filesystem mount warning
 echo "This script will create and format the partitions as follows:"
-echo "/dev/sda1 - $Size_EFI will be mounted as /boot/efi"
-echo "/dev/sda2 - $size_SWP will be used as swap"
+echo "/dev/sda1 - ${Size_EFI} will be mounted as /boot/efi"
+echo "/dev/sda2 - ${size_SWP} will be used as swap"
 echo "/dev/sda3 - rest of space will be mounted as /"
 read -p 'Continue? [y/N]: ' fsok
 if ! [ $fsok = 'y' ] && ! [ $fsok = 'Y' ]
