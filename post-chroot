@@ -35,7 +35,7 @@ ln -sf /usr/share/zoneinfo/$Time_Zone /etc/localtime
 hwclock --systohc
 
 # Set locale to en_AU.UTF-8 UTF-8
-sed -i '/$Locale en_UTF-8/s/^#//g' /etc/locale.gen
+sed -i '/$Locale en_AU.UTF-8/s/^#//g' /etc/locale.gen
 locale-gen
 echo "$Language" >> /etc/locale.conf
 
