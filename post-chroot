@@ -58,7 +58,7 @@ echo
 echo "Password set for root user"
 
 # get best mirrors
-echo "Running reflector to get the bestr mirrors"
+echo "Running reflector to get the best mirrors"
 reflector -c $Country -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 
 # Install Required packages

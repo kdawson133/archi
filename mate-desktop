@@ -21,4 +21,7 @@ paru -S --noconfirm lightdm-slick-greeter lightdm-settings brisk-menu gnome-syst
 
 sudo systemctl enable lightdm
 
+echo "Do not forget to enable lighdm-slick-greeter in /etc/lightdm/lightdm.conf"
+
+
 printf "\e[1;32mDone! Type reboot.\e[0m" 
